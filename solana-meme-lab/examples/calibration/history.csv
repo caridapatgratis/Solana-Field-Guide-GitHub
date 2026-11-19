@@ -1,0 +1,4 @@
+utc,event_id,run,mint,event,decision_or_reason,position,stake_raw,token_raw,proceeds_raw,fee_raw,rent_reserved_or_released_raw,net_before_failed_attempt_fees_raw,quote_event_id
+2026-11-18T08:11:25.162Z,3,a8515308ae6d,DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263,DECISION,PAPER_ELIGIBLE,,,,,,,,
+2026-11-18T08:11:27.429Z,5,a8515308ae6d,DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263,PAPER_BUY,,a8515308ae6d-3,10000000,31324460123,,15000,3000000,,4
+2026-11-18T08:11:42.003Z,8,a8515308ae6d,DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263,PAPER_SELL,first available timed exit,a8515308ae6d-3,,31324460123,9914993,15000,3000000,-115007,7

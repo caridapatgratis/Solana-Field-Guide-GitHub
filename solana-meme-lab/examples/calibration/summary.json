@@ -1,0 +1,21 @@
+{
+  "mode": "calibration-only",
+  "policy_hash": "6c95307aed4f5b73",
+  "exported_at": "2026-11-18T08:11:42.089Z",
+  "event_counts": {
+    "QUOTE": 5,
+    "DECISION": 1,
+    "PAPER_BUY": 1,
+    "PAPER_SELL": 1
+  },
+  "book": {
+    "cash_lamports": 999884993,
+    "realized_net_lamports": -115007,
+    "utc_day_net_lamports": -115007,
+    "closed_positions": 1,
+    "open_positions": {},
+    "conservative_equity_floor_lamports": 999884993
+  },
+  "units": "SOL cash in integer lamports; token quantities in mint base units",
+  "note": "All fills simulated. Cash floor excludes all open assets and rent. No open balance is realized income."
+}

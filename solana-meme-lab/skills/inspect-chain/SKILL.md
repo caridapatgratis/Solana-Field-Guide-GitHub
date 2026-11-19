@@ -1,0 +1,17 @@
+---
+name: inspect-chain
+description: Independently check Solana mint controls, owner concentration, liquidity custody and RugCheck warnings. Use on a confirmed mint and after any venue or authority change.
+---
+
+# Check what the token and market allow
+**Input:** Network, mint, launch transaction, program, curve or pool, current slot. Use read-only RPC and the RugCheck token report. Never treat a numeric vendor score as a green light.
+
+1. Decode the mint under its actual owner program. Distinguish mint authority, freeze authority and metadata-update authority. For Token-2022 enumerate extension types: a fee, permanent delegate, transfer hook, nontransferable mint, default-frozen accounts or pause powers can change what a holder can do. Unknown extension/layout → `UNKNOWN`. The starter admits only legacy SPL or Token-2022 with no extensions beyond metadata pointer/metadata and no mint/freeze authority. This is a filter, not a claim that every other token is fraudulent. Check existing token-account states separately: the starter counts frozen and initialized balances and does not report their split. See the [account-state and slot audit](../../notes/technical-audit.md).
+2. On a **curve** verify program ownership, actual curve/vault from the creation transaction, quote mint, current mode/creator, completion and real reserve in quote units. Virtual liquidity is not available cash. On **migration** pause new entries until the new pool and custody are checked. For an **AMM**, trace the pool, mint pair and owning program; inspect LP/position withdrawal rights and lock share/expiry. A fee-collection right need not be a withdrawal right. This latter path is an agent procedure, not implemented by the curve-only entry adapter.
+3. Count holder **owners**, not token accounts. Fetch the supply. Remove only proved program inventory, not an account merely labeled “burn”, “locker” or “exchange”. The starter removes only the exact verified curve vault. Reconcile the full supply, sum multiple token accounts per owner, then compute top-one, top-ten and disclosed issuer roles over the non-vault float. Report denominator and excluded accounts. A top-20 API response is not a complete holder list; incomplete coverage is `UNKNOWN`, not a pass.
+4. Get `/v1/tokens/{mint}/report` at RugCheck. Keep its named risks, mint, delivery timestamp and evidence hash. Its detection date is not necessarily the last rescan. `rugged` or severe/unrecognized severity → hold for review; missing report → unknown. Prefer fresh chain evidence; never present a third-party label as your accusation.
+5. Quote both directions at **the intended size** after these checks. Real observed sells and a current exit route answer different questions; require both. Repeat on changes; last trade or fully diluted market cap says nothing about what your position would receive.
+
+**Output:** `{gate,state,reason,slot_or_asof,source,raw_amount,denominator,limitations}` per item. The [paper scanner](../../tools/lab.py) automates the narrow curve path in its `scan` and `recheck` subcommands. Escalate contradictory facts to [Judge checkpoints](../judge-checkpoints/SKILL.md). See [policy values](../../rules.json) and the [technical review](../../FIELD-GUIDE.md#technical-review) for denominators and changing liquidity rights.
+
+**Kit location:** Run commands from the kit root, not this skill folder. See the [operator setup](../../README.md) and [agent routing map](../../AGENTS.md). `SOLANA_LAB_ROOT` is an optional agent convention; the Python tools do not read it.

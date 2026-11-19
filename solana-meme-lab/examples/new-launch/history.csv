@@ -1,0 +1,8 @@
+utc,event_id,run,mint,event,decision_or_reason,position,stake_raw,token_raw,proceeds_raw,fee_raw,rent_reserved_or_released_raw,net_before_failed_attempt_fees_raw,quote_event_id
+2026-11-18T08:11:57.067Z,2,f6d7c10318a7,E1MYV8hVJyqNEuBo8EjhhN8o7pLKDcn9uG6YRLJCpump,DISCOVERED,,,,,,,,,
+2026-11-18T08:12:00.858Z,3,f6d7c10318a7,E1MYV8hVJyqNEuBo8EjhhN8o7pLKDcn9uG6YRLJCpump,DECISION,WATCH,,,,,,,,
+2026-11-18T08:12:00.858Z,4,f6d7c10318a7,,FAILED_CHAIN_TX,,,,,,,,,
+2026-11-18T08:12:01.033Z,5,f6d7c10318a7,7o6VfCEafaqiHDftbcb2YpkTJqqQS5MNw518orjnpump,DISCOVERED,,,,,,,,,
+2026-11-18T08:12:04.779Z,6,f6d7c10318a7,7o6VfCEafaqiHDftbcb2YpkTJqqQS5MNw518orjnpump,DECISION,WATCH,,,,,,,,
+2026-11-18T08:12:04.960Z,7,f6d7c10318a7,9jaUAcUSsys5QAbHZLGvhXvaZnYdkvN9eVnqTwVupump,DISCOVERED,,,,,,,,,
+2026-11-18T08:12:08.724Z,8,f6d7c10318a7,9jaUAcUSsys5QAbHZLGvhXvaZnYdkvN9eVnqTwVupump,DECISION,WATCH,,,,,,,,

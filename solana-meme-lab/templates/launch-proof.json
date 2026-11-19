@@ -1,0 +1,16 @@
+{
+  "schema": "solana-launch-proof/1", "state": "draft", "network": "devnet", "as_of_utc": null,
+  "mint": null, "display_name": null, "ticker": null, "canonical_site": null,
+  "creator_pubkey": null, "create_user_pubkey": null, "fee_payer_pubkey": null,
+  "launch_program": null, "create_tx": null, "finalized_slot": null,
+  "token_program": null, "decimals": null, "supply_raw": null,
+  "mint_authority": {"status":"unknown","pubkey":null}, "freeze_authority": {"status":"unknown","pubkey":null},
+  "extensions_verified": false, "extensions": [], "metadata_update_authority": null, "metadata_uri": null,
+  "supply_allocation_bps": {"public_curve_or_pool":null,"team":null,"treasury":null,"other":null},
+  "team_and_treasury_wallets": [], "team_first_buys": [], "vesting_contracts_and_unlocks_utc": [],
+  "venue": {"stage":null,"curve_or_pool":null,"base_vault":null,"quote_mint":null,"real_quote_reserve_raw":null,"reserve_slot":null,"migration_rules":null,"lp_withdrawal_rights":null,"lock_share_bps":null,"lock_until_utc":null,"lock_proof_tx":null},
+  "fees_and_recipients": [], "fee_change_rights": null, "privileged_roles": [], "treasury_approval_policy":null,
+  "repository": {"url":null,"project_affiliation":null,"release_url":null,"commit_sha":null,"artifact_sha256":null,"license":null,"demo":null,"token_needed_for_what":null},
+  "official_x":null,"official_telegram":null,"paid_promotions":[],"risks":[],"incident_contact":null,
+  "evidence_links":[], "prior_manifest_sha256":null, "approver":null
+}

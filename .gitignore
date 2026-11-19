@@ -1,0 +1,45 @@
+# Local secrets and signers: never upload these, including via the browser.
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.seed
+*-keypair.json
+id.json
+keys/
+.ssh/
+.config/solana/
+keypairs/
+wallets/
+secrets/
+private/
+
+# Private or generated runs, not the dated examples shipped with the kit.
+*.sqlite*
+*.db
+*.db-*
+*.log
+reviews/
+reports/
+report/
+report-*/
+signals.jsonl
+run-local/
+working-forms/
+
+# Local tooling and publisher artifacts (release files belong in Releases).
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.envrc
+.pytest_cache/
+.DS_Store
+Thumbs.db
+.vscode/
+*.code-workspace
+*.zip
+/release-assets/
+/Solana-Field-Guide.html

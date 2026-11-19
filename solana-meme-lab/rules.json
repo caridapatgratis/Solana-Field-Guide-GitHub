@@ -1,0 +1,11 @@
+{
+  "version": "curve-paper-1.0", "bankroll_lamports": 1000000000,
+  "stake_lamports": 10000000, "leg_fee_lamports": 15000, "ata_reserve_lamports": 3000000,
+  "max_daily_net_loss_lamports": 30000000, "hold_seconds": 120,
+  "latency_seconds": 2, "quote_max_age_seconds": 8, "evidence_max_age_seconds": 90,
+  "slippage_limit_bps": 100, "execution_haircut_bps": 30, "roundtrip_loss_cap_bps": 500,
+  "max_abs_impact_pct": 3, "age_limit_seconds": 1800, "min_real_sol_lamports": 2000000000,
+  "max_owner_float_bps": 1500, "max_top10_float_bps": 6000, "max_issuer_float_bps": 1000,
+  "trade_sample_signatures": 16, "flow_lookback_seconds": 180, "min_buy_wallets": 5,
+  "min_sell_wallets": 2, "min_trade_slots": 3, "review_max_age_seconds": 600
+}

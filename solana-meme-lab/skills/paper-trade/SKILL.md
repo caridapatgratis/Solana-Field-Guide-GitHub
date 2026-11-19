@@ -1,0 +1,17 @@
+---
+name: paper-trade
+description: Simulate entry and exit with fresh real Solana quotes, costs and delayed fills. Never sign, submit a transaction, or spend SOL.
+---
+
+# Paper execution only
+**Input:** A timestamped `PAPER_ELIGIBLE` decision from [Judge checkpoints](../judge-checkpoints/SKILL.md), isolated paper ledger and the [frozen policy](../../rules.json). Use a real quote for the exact size; never substitute chart price or a last-trade tick. One SOL = one billion lamports.
+
+1. The baseline starts with 1 virtual SOL, 0.01 virtual SOL per position, one open position and one entry per mint. Stop adding entries after a 0.03 SOL net realized UTC-day loss. Reserve 0.003 SOL for a possible token account; release it only on a modeled complete exit. These are test assumptions, not suggested live risk sizes.
+2. Use **GET** Jupiter `/swap/v2/order` without `taker`; no wallet or signed transaction. Check the mint pair, integer size, ExactIn, minimum output, price impact and freshness. Quote SOL → token, then the expected net token units → SOL. Record request, response, retrieval times, latency, route and fee fields. Do not subtract price impact or DEX/router fees a second time: use the quoted output. A missing quote, no verified-curve leg on a required probe, or a poor round trip blocks entry. One matching leg is enough for the venue check; it does not prove a curve-only route. The signal probe reverses expected tokens, not the later fill. See the [quote receipt walkthrough](../../notes/technical-audit.md#3-check-the-route-and-the-amount-being-reversed).
+3. Wait at least two seconds. Re-quote in the same direction, apply the 30 bp execution haircut to the fresh output in integer base units. Require both signal and fresh minimum outputs. A modeled landed limit failure pays the modeled 15,000-lamport fee but gets no tokens. An API timeout before any modeled send is `NO_FILL`, not an on-chain fee. A quote is still not a landing guarantee.
+4. Normal exit target: 120 s after entry. Run `python tools/lab.py --db paper.sqlite manage` on a schedule. At the first eligible observation, quote **the entire actual token balance**, delay and request a second sell quote. Do not claim the target-time price if the worker was late. Allow a migrated exit route, but never enter an unverified migrated pool. A missing or stale quote, an over-cap impact (absolute cap 3% on **sells too**), a missed limit or no fee budget can mean `EXIT_UNFILLED`. Keep tokens and capital locked. Zero is a **stress mark**, not an observed price. Retry on later calls; do not book a fake zero-price sale.
+5. Closed-position net = sell SOL received − stake − both modeled network/priority fees; deduct failed-attempt fees from portfolio results. Keep rent release out of profit. Use the [operator instructions](../../README.md) to run a separate wallet-free `calibrate` ledger on an established token to check accounting, never as evidence the early strategy works.
+
+**Output:** `QUOTE`, `NO_FILL`, `PAPER_FAIL_FEE`, `PAPER_BUY`, `EXIT_UNFILLED`, `PAPER_SELL`. See the [calibration receipts](../../examples/calibration/events.jsonl) and [Trade journal](../trade-journal/SKILL.md). The tool requests quotes only; it does not supply a wallet, build a trade or submit an order.
+
+**Kit location:** Run commands from the kit root, not this skill folder. See the [operator setup](../../README.md) and [agent routing map](../../AGENTS.md). `SOLANA_LAB_ROOT` is an optional agent convention; the Python tools do not read it.

@@ -1,0 +1,5 @@
+# Preserve the kit's published byte-level SHA-256 checks across platforms.
+* text=auto eol=lf
+# The saved CSV evidence includes original CRLF; do not normalize any kit CSV.
+*.csv -text
+*.zip binary

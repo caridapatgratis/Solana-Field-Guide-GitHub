@@ -1,0 +1,5 @@
+{
+  "role": "independent-reviewer", "reviewer": null, "mint": null, "observed_at": null,
+  "builder": {"mint_bound": null, "release_verified": null, "demo_verified": null, "conflict": null, "references": []},
+  "social": {"mint_bound": null, "timestamped_growth": null, "independent_sources": null, "paid_separated": null, "conflict": null, "references": []}
+}
